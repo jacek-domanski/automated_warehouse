@@ -1,4 +1,6 @@
 from warehouse import Warehouse
+from random import choice
+from shortest_path import ShortestPath
 
 
 class AutomatedWarehouse:
@@ -6,7 +8,10 @@ class AutomatedWarehouse:
         self.warehouse = Warehouse(file)
 
     def run(self):
-        pass
+        shortest_path = ShortestPath(self.warehouse.matrix)
+        a = choice(self.warehouse.starts)
+        b = choice(self.warehouse.racks)
+        shortest_path.find(a, b)
 
 
 if __name__ == '__main__':

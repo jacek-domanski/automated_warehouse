@@ -2,35 +2,39 @@ from misc import Point
 from abc import ABC
 
 
-class Tile(ABC):
+class AbstractTile(ABC):
     def __init__(self, x, y):
         self.coords = Point(x, y)
         self.connections = []
+        self.passable = True  # if cart can go through this tile
 
 
-class Floor(Tile):
+class Floor(AbstractTile):
     def __init__(self, x, y):
         super().__init__(x, y)
 
 
-class Wall(Tile):
+class Wall(AbstractTile):
+    def __init__(self, x, y):
+        super().__init__(x, y)
+        self.passable = False
+
+
+class Start(AbstractTile):
     def __init__(self, x, y):
         super().__init__(x, y)
 
 
-class Start(Tile):
+class Target(AbstractTile):
     def __init__(self, x, y):
         super().__init__(x, y)
 
 
-class Target(Tile):
-    def __init__(self, x, y):
-        super().__init__(x, y)
-
-
-class Rack(Tile):
+class Rack(AbstractTile):
     def __init__(self, x, y, access_dir):
         super().__init__(x, y)
+        self.passable = False
+
         if access_dir == '<':
             self.access_point = Floor(x-1, y)
         elif access_dir == '>':
