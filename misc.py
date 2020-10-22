@@ -12,3 +12,6 @@ class Point:
 
         distance = hypot(x_dist, y_dist)
         return distance
+
+    def __str__(self):
+        return f'({self.x}, {self.y})'

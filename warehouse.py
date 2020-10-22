@@ -1,4 +1,5 @@
 from tiles import *
+from shortest_path import ShortestPath
 
 
 class Warehouse:
@@ -74,6 +75,7 @@ class Warehouse:
 if __name__ == '__main__':
     warehouse = Warehouse('wh1.txt')
 
-    for tile_list in warehouse.tiles:
-        for tile in tile_list:
-            print(f'{tile.__class__.__name__}\t({tile.coords.x}, {tile.coords.y})\tn:{len(tile.connections)}')
+    # for tile_list in warehouse.tiles:
+    #     for tile in tile_list:
+    #         print(f'{tile.__class__.__name__}\t({tile.coords.x}, {tile.coords.y})\tn:{len(tile.connections)}')
+
