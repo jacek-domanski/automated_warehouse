@@ -39,7 +39,9 @@ class Rack(AbstractTile):
     def __init__(self, x, y, access_dir):
         super().__init__(x, y)
         self.color = GUI.RACK_COLOR
+        self.access_color = GUI.RACK_ACCESS_COLOR
         self.passable = False
+        self.access_dir = access_dir
 
         if access_dir == '<':
             self.access_point = Floor(x-1, y)

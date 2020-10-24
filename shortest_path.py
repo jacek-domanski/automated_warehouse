@@ -76,7 +76,7 @@ class ShortestPath:
         node = self.nodes[self.b.y][self.b.x]
 
         while node != self.starting_node:
-            path.insert(0, node.tile.coords)
+            path.insert(0, node.tile)
             node = node.best_from
 
         return path

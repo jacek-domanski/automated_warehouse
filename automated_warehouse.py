@@ -1,6 +1,7 @@
 from warehouse import Warehouse
 from random import choice
-from shortest_path import ShortestPath
+from warehouse_drawer import WarehouseDrawer
+from cart import Cart
 
 
 class AutomatedWarehouse:
@@ -8,19 +9,12 @@ class AutomatedWarehouse:
         self.warehouse = Warehouse(file)
 
     def run(self):
-        # shortest_path = ShortestPath(self.warehouse.matrix)
-        # a = choice(self.warehouse.starts)
-        # b = choice(self.warehouse.racks)
-        # shortest_path.find(a, b)
-
-        a = self.warehouse.matrix[1][0].coords
-        b = self.warehouse.matrix[4][2].coords
-        shortest_path = ShortestPath(self.warehouse.matrix)
-        path = shortest_path.find(a, b)
-
-        print(f'Shortest path from {a} to {b}:')
-        for point in path:
-            print(f'{point}')
+        warehouse_drawer = WarehouseDrawer(self.warehouse)
+        carts = []
+        for _ in range(50):
+            carts.append(Cart(choice(self.warehouse.starts), self.warehouse))
+        warehouse_drawer.carts = carts
+        warehouse_drawer.run()
 
 
 if __name__ == '__main__':
