@@ -107,13 +107,15 @@ class WarehouseDrawer:
                                                                 fill=cart.load_color,
                                                                 width=0))
 
-    def run(self):
+    def run(self, method):
+        self.cart_handling_method = method
         self.root.after(0, self.animation)
         mainloop()
 
     def animation(self):
         while True:
-            self.motion_handling()
+            print('ch method')
+            self.cart_handling_method()
             self.draw_carts()
             self.root.update()
 
@@ -139,4 +141,4 @@ if __name__ == '__main__':
         carts.append(Cart(choice(warehouse.starts), warehouse))
     warehouse_drawer.carts = carts
 
-    warehouse_drawer.run()
+    warehouse_drawer.run(warehouse_drawer.motion_handling)

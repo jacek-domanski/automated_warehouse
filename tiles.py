@@ -32,7 +32,9 @@ class Start(AbstractTile):
 class Target(AbstractTile):
     def __init__(self, x, y):
         super().__init__(x, y)
+        self.passable = False
         self.color = GUI.TARGET_COLOR
+        self.access_point = Floor(x+1, y)
 
 
 class Rack(AbstractTile):
@@ -48,6 +50,6 @@ class Rack(AbstractTile):
         elif access_dir == '>':
             self.access_point = Floor(x+1, y)
         elif access_dir == 'v':
-            self.access_point = Floor(x, y-1)
-        elif access_dir == '^':
             self.access_point = Floor(x, y+1)
+        elif access_dir == '^':
+            self.access_point = Floor(x, y-1)
