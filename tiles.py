@@ -1,5 +1,6 @@
 from misc import Point
 from abc import ABC
+import GUI
 
 
 class AbstractTile(ABC):
@@ -12,27 +13,32 @@ class AbstractTile(ABC):
 class Floor(AbstractTile):
     def __init__(self, x, y):
         super().__init__(x, y)
+        self.color = GUI.FLOOR_COLOR
 
 
 class Wall(AbstractTile):
     def __init__(self, x, y):
         super().__init__(x, y)
         self.passable = False
+        self.color = GUI.WALL_COLOR
 
 
 class Start(AbstractTile):
     def __init__(self, x, y):
         super().__init__(x, y)
+        self.color = GUI.START_COLOR
 
 
 class Target(AbstractTile):
     def __init__(self, x, y):
         super().__init__(x, y)
+        self.color = GUI.TARGET_COLOR
 
 
 class Rack(AbstractTile):
     def __init__(self, x, y, access_dir):
         super().__init__(x, y)
+        self.color = GUI.RACK_COLOR
         self.passable = False
 
         if access_dir == '<':
