@@ -22,6 +22,7 @@ class AutomatedWarehouse:
                 cart.move_along_path()
 
             elif not cart.loaded:
+                # going to target
                 cart.loaded = True
                 new_target = choice(self.warehouse.targets).access_point
 
@@ -29,11 +30,13 @@ class AutomatedWarehouse:
                 cart.move_along_path()
 
             else:
-                cart.loaded = False
-                new_target = choice(self.warehouse.racks).access_point
+                cart.unload()
+                if not cart.loaded:
+                    cart.loaded = False
+                    new_target = choice(self.warehouse.racks).access_point
 
-                cart.set_path(new_target)
-                cart.move_along_path()
+                    cart.set_path(new_target)
+                    cart.move_along_path()
 
 if __name__ == '__main__':
     automated_warehouse = AutomatedWarehouse('wh1.txt')

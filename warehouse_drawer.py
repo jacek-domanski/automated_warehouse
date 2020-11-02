@@ -79,9 +79,11 @@ class WarehouseDrawer:
                          cart.act_tile.coords.y * (GUI.TILE_SIZE + GUI.GRID_THICKNESS))
         top_left.x += (GUI.TILE_SIZE - GUI.CART_SIZE) // 2
         top_left.y += (GUI.TILE_SIZE - GUI.CART_SIZE) // 2
-        movement_offset_x = (GUI.TILE_SIZE + GUI.GRID_THICKNESS) * \
+        movement_offset_x = abs(cart.act_tile.coords.x - cart.target_tile.coords.x) * \
+                            (GUI.TILE_SIZE + GUI.GRID_THICKNESS) * \
                             cart.target_directions('x') * cart.movement_progress / 100
-        movement_offset_y = (GUI.TILE_SIZE + GUI.GRID_THICKNESS) * \
+        movement_offset_y = abs(cart.act_tile.coords.y - cart.target_tile.coords.y) * \
+                            (GUI.TILE_SIZE + GUI.GRID_THICKNESS) * \
                             cart.target_directions('y') * cart.movement_progress / 100
         top_left.x += movement_offset_x
         top_left.y += movement_offset_y

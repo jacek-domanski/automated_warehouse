@@ -14,6 +14,7 @@ class Cart:
         self.load_color = GUI.CART_LOAD_COLOR
 
         self.loaded = False
+        self.unloading = False
 
         self.wh = warehouse
         self.path_iterator = 0
@@ -83,3 +84,15 @@ class Cart:
 
     def is_moving(self):
         return self.act_tile != self.target_tile
+
+    def unload(self):
+        if not self.unloading:
+            self.unloading = True
+            self.set_target(self.wh.matrix[self.act_tile.coords.y][self.act_tile.coords.x-2])
+
+        self.move()
+        if not self.is_moving():
+            self.unloading = False
+            self.loaded = False
+
+
